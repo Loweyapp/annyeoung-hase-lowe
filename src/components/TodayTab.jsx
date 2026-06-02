@@ -16,7 +16,7 @@ export default function TodayTab({ onViewDay }) {
         <span className="trip-emoji">✈️</span>
         <h1>Annyeong Hase-Lowe</h1>
         <p className="subtitle">Korea & Japan — Jun–Jul 2026</p>
-        <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.4)', marginTop: 4, letterSpacing: '0.05em' }}>v1.2</p>
+        <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.4)', marginTop: 4, letterSpacing: '0.05em' }}>v1.3</p>
 
         {tripOver ? (
           <div className="countdown-box">
