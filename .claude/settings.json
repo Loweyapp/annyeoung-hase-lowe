@@ -1,0 +1,18 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "if": "Bash(git push*)",
+            "command": "FILE=/home/user/annyeoung-hase-lowe/src/components/TodayTab.jsx; current=$(grep -oP 'v\\d+\\.\\d+' \"$FILE\" | head -1); [ -z \"$current\" ] && exit 0; major=$(echo \"$current\" | grep -oP '\\d+' | head -1); minor=$(echo \"$current\" | grep -oP '\\d+' | tail -1); new_minor=$((minor + 1)); new_version=\"v${major}.${new_minor}\"; python3 -c \"import re; f=open('$FILE'); s=f.read(); f.close(); s=re.sub(r'v\\\\d+\\\\.\\\\d+', '$new_version', s, count=1); open('$FILE','w').write(s)\"; cd /home/user/annyeoung-hase-lowe && git add src/components/TodayTab.jsx && git commit -m \"Bump to $new_version\" 2>/dev/null || true",
+            "statusMessage": "Bumping version...",
+            "timeout": 15
+          }
+        ]
+      }
+    ]
+  }
+}
