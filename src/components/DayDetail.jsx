@@ -48,10 +48,15 @@ export default function DayDetail({ dayId, onBack, onNavigate }) {
           <div>
             <h1>Day {day.dayNumber}</h1>
             <p className="day-meta">{day.theme}</p>
-            <div style={{ marginTop: 8 }}>
+            <div style={{ marginTop: 8, display: 'flex', gap: 6, flexWrap: 'wrap', alignItems: 'center' }}>
               <span className="location-tag">
                 {day.country === 'korea' ? '🇰🇷' : '🇯🇵'} {day.city} · {formatDate(day.date)}
               </span>
+              {day.splitDay && (
+                <span className="location-tag" style={{ background: 'rgba(255,255,255,0.2)' }}>
+                  Alex 🎒 / Kelly 👜 split
+                </span>
+              )}
             </div>
           </div>
         </div>
@@ -75,7 +80,15 @@ export default function DayDetail({ dayId, onBack, onNavigate }) {
                 <div className="activity-card-header">
                   <div className="activity-icon-wrap">{activity.icon}</div>
                   <div className="activity-info">
-                    <h4>{activity.name}</h4>
+                    <h4>
+                      {activity.name}
+                      {activity.person === 'alex' && (
+                        <span style={{ marginLeft: 6, fontSize: 11, background: '#DBEAFE', color: '#1E40AF', borderRadius: 4, padding: '1px 5px' }}>Alex 🎒</span>
+                      )}
+                      {activity.person === 'kelly' && (
+                        <span style={{ marginLeft: 6, fontSize: 11, background: '#FCE7F3', color: '#9D174D', borderRadius: 4, padding: '1px 5px' }}>Kelly 👜</span>
+                      )}
+                    </h4>
                     <p className="activity-native">
                       {activity.nameKo || activity.nameJa || activity.type}
                     </p>
