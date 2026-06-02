@@ -1,4 +1,4 @@
-const CACHE = 'hase-lowe-v1';
+const CACHE = 'hase-lowe-v2';
 const BASE = '/annyeoung-hase-lowe';
 
 const PRECACHE = [
