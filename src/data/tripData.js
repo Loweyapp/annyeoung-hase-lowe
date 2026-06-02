@@ -294,7 +294,7 @@ export const TRIP = {
         {
           id: "a6",
           time: "08:00",
-          name: "Alex 종합건강검진 (Yeouido)",
+          name: "Alex Comprehensive Health Check (Yeouido)",
           nameKo: "종합건강검진 — 여의도",
           type: "health",
           icon: "🏥",
@@ -579,7 +579,7 @@ export const TRIP = {
         {
           id: "a18",
           time: "14:00",
-          name: "지옥계곡 — Jigokudani Hell Valley",
+          name: "Jigokudani Hell Valley",
           nameJa: "地獄谷",
           type: "sightseeing",
           icon: "🌋",
@@ -817,7 +817,7 @@ export const TRIP = {
         {
           id: "a28",
           time: "11:40",
-          name: "오타루 운하",
+          name: "Otaru Canal",
           nameJa: "小樽運河",
           type: "sightseeing",
           icon: "⛵",
@@ -836,7 +836,7 @@ export const TRIP = {
         {
           id: "a29",
           time: "13:00",
-          name: "점심 — 오타루 초밥",
+          name: "Lunch — Otaru Sushi",
           nameJa: "小樽 お寿司",
           type: "food",
           icon: "🍣",
@@ -855,7 +855,7 @@ export const TRIP = {
         {
           id: "a30",
           time: "14:30",
-          name: "마놀로 가게 방문",
+          name: "Visit Manolo's Shop",
           nameJa: "マノロ のお店",
           type: "shopping",
           icon: "🛍️",
@@ -870,7 +870,7 @@ export const TRIP = {
         {
           id: "a31",
           time: "16:30",
-          name: "삿포로 귀환",
+          name: "Return to Sapporo",
           nameJa: "札幌へ帰還",
           type: "transport",
           icon: "🚆",
@@ -919,7 +919,7 @@ export const TRIP = {
         {
           id: "a32",
           time: "09:00",
-          name: "CTS 공항 이동 & 탑승",
+          name: "Head to CTS Airport & Board",
           nameJa: "新千歳空港 出発",
           type: "transport",
           icon: "✈️",
@@ -937,7 +937,7 @@ export const TRIP = {
         {
           id: "a33",
           time: "12:40",
-          name: "KIX 도착 → 교토 이동",
+          name: "Arrive KIX → Travel to Kyoto",
           nameJa: "関空 → 京都",
           type: "transport",
           icon: "🚌",
@@ -972,7 +972,7 @@ export const TRIP = {
         {
           id: "a35",
           time: "15:30",
-          name: "니시키 시장",
+          name: "Nishiki Market",
           nameJa: "錦市場",
           type: "food",
           icon: "🥢",
@@ -991,7 +991,7 @@ export const TRIP = {
         {
           id: "a36",
           time: "16:30",
-          name: "기요미즈데라 (청수사)",
+          name: "Kiyomizudera Temple",
           nameJa: "清水寺",
           type: "sightseeing",
           icon: "⛩️",
@@ -1010,7 +1010,7 @@ export const TRIP = {
         {
           id: "a37",
           time: "18:30",
-          name: "산넨자카 · 니넨자카 · 하나미코지",
+          name: "Sannenzaka · Ninenzaka · Hanamikoji",
           nameJa: "三年坂 · 二年坂 · 花見小路",
           type: "culture",
           icon: "🏮",
@@ -1029,7 +1029,7 @@ export const TRIP = {
         {
           id: "a38",
           time: "19:30",
-          name: "폰토쵸 이자카야 저녁",
+          name: "Pontocho Izakaya Dinner",
           nameJa: "先斗町",
           type: "food",
           icon: "🍶",
@@ -1081,7 +1081,7 @@ export const TRIP = {
         {
           id: "a39",
           time: "07:30",
-          name: "체크아웃 & 짐 맡기기",
+          name: "Check Out & Store Luggage",
           nameJa: "チェックアウト",
           type: "transport",
           icon: "🧳",
@@ -1096,7 +1096,7 @@ export const TRIP = {
         {
           id: "a40",
           time: "07:45",
-          name: "후시미 이나리 타이샤",
+          name: "Fushimi Inari Taisha",
           nameJa: "伏見稲荷大社",
           type: "sightseeing",
           icon: "⛩️",
@@ -1116,7 +1116,7 @@ export const TRIP = {
         {
           id: "a41",
           time: "09:30",
-          name: "에이칸도 (젤린지) & 난젠지",
+          name: "Eikan-do & Nanzenji",
           nameJa: "永観堂 & 南禅寺",
           type: "sightseeing",
           icon: "🌿",
@@ -1135,7 +1135,7 @@ export const TRIP = {
         {
           id: "a42",
           time: "12:30",
-          name: "교토역으로 이동 & 점심",
+          name: "Back to Kyoto Station & Lunch",
           nameJa: "京都駅へ",
           type: "food",
           icon: "🍱",
@@ -1154,7 +1154,7 @@ export const TRIP = {
         {
           id: "a43",
           time: "15:10",
-          name: "교토역 → 아리마 온천 버스",
+          name: "Bus: Kyoto Station → Arima Onsen",
           nameJa: "京都駅 → 有馬温泉 バス",
           type: "transport",
           icon: "🚌",
@@ -1174,7 +1174,7 @@ export const TRIP = {
         {
           id: "a44",
           time: "16:30",
-          name: "체크인 — 다케토리테이 마루야마",
+          name: "Check In — Taketoritei Maruyama",
           nameJa: "竹取亭円山 チェックイン",
           type: "leisure",
           icon: "♨️",
@@ -1194,7 +1194,7 @@ export const TRIP = {
         {
           id: "a45",
           time: "19:00",
-          name: "튀김 오마카세 저녁",
+          name: "Tempura Omakase Dinner",
           nameJa: "天ぷら おまかせ",
           type: "food",
           icon: "🍤",
@@ -1247,7 +1247,7 @@ export const TRIP = {
         {
           id: "a46",
           time: "07:00",
-          name: "아침 온천욕",
+          name: "Morning Onsen Soak",
           nameJa: "朝風呂",
           type: "leisure",
           icon: "♨️",
@@ -1262,7 +1262,7 @@ export const TRIP = {
         {
           id: "a47",
           time: "08:00",
-          name: "아침식사",
+          name: "Breakfast at the Ryokan",
           nameJa: "朝食",
           type: "food",
           icon: "🍳",
@@ -1277,7 +1277,7 @@ export const TRIP = {
         {
           id: "a48",
           time: "10:00",
-          name: "체크아웃 & 짐 맡기기",
+          name: "Check Out & Store Luggage",
           nameJa: "チェックアウト",
           type: "transport",
           icon: "🧳",
@@ -1292,7 +1292,7 @@ export const TRIP = {
         {
           id: "a49",
           time: "11:00",
-          name: "아리마 온천 마을 & 점심",
+          name: "Arima Onsen Village & Lunch",
           nameJa: "有馬温泉街 & 昼食",
           type: "food",
           icon: "🍚",
@@ -1311,7 +1311,7 @@ export const TRIP = {
         {
           id: "a50",
           time: "13:10",
-          name: "아리마 → 우메다 버스",
+          name: "Bus: Arima → Umeda",
           nameJa: "有馬 → 梅田 バス",
           type: "transport",
           icon: "🚌",
@@ -1320,7 +1320,7 @@ export const TRIP = {
           notes: "Bus from Arima to Umeda (Hankyu 3rd Building). Departs 13:10, arrives Umeda ~14:05.",
           tips: [
             "Pre-book this bus 1 month ahead",
-            "13:10 → Umeda (한큐3번가) 14:05",
+            "13:10 → Umeda (Hankyu 3rd Building) 14:05",
             "Alternatively 13:40 → Umeda 14:40",
           ],
           cost: "~¥1,500",
@@ -1330,7 +1330,7 @@ export const TRIP = {
         {
           id: "a51",
           time: "15:00",
-          name: "호텔 그라세리 오사카 난바 체크인",
+          name: "Check In — Hotel Gracery Osaka Namba",
           nameJa: "ホテルグレイスリー大阪なんば チェックイン",
           type: "leisure",
           icon: "🏨",
@@ -1345,7 +1345,7 @@ export const TRIP = {
         {
           id: "a52",
           time: "16:00",
-          name: "도톤보리 & 오사카 탐방",
+          name: "Dotonbori & Osaka Explore",
           nameJa: "道頓堀",
           type: "sightseeing",
           icon: "🦀",
@@ -1353,7 +1353,7 @@ export const TRIP = {
           lng: 135.5023,
           notes: "Osaka's neon-lit entertainment district — Glico Running Man sign, giant crab, takoyaki stalls, packed arcades.",
           tips: [
-            "도톤보리 크루즈 — pre-book on Winter Cruise website for a water-level view",
+            "Dotonbori Canal Cruise — pre-book on Winter Cruise website for a water-level view",
             "Kushikatsu (deep-fried skewers) are an Osaka speciality — Daruma is the classic chain",
             "The Glico Man has a viewing spot on the bridge opposite",
           ],
@@ -1365,7 +1365,7 @@ export const TRIP = {
         {
           id: "a53",
           time: "19:30",
-          name: "요카로 — 오뎅바 저녁",
+          name: "Yokaro — Oden Bar Dinner",
           nameJa: "よかろ おでんバー",
           type: "food",
           icon: "🍢",
@@ -1398,8 +1398,8 @@ export const TRIP = {
       ],
       suggestions: [
         "Osaka is a food city first — prioritise eating over sightseeing",
-        "장어덮밥 (우나기 동) — 우나토 in Umeda is a great chain for eel rice bowl",
-        "헤파이브 관람차 (HEP Five Ferris Wheel) for sunset — free with Osaka Amazing Pass or ¥600",
+        "Eel rice bowl (unagi don) — Unato in Umeda is a great chain",
+        "HEP Five Ferris Wheel for sunset — free with Osaka Amazing Pass or ¥600",
       ],
     },
 
@@ -1417,7 +1417,7 @@ export const TRIP = {
         {
           id: "a54",
           time: "08:30",
-          name: "오사카성 & 뱃놀이",
+          name: "Osaka Castle & Moat Boat Ride",
           nameJa: "大阪城 & ボート",
           type: "sightseeing",
           icon: "🏯",
@@ -1438,7 +1438,7 @@ export const TRIP = {
         {
           id: "a55",
           time: "11:30",
-          name: "점심 — 오사카 명물",
+          name: "Lunch — Osaka Classics",
           nameJa: "大阪ランチ",
           type: "food",
           icon: "🐙",
@@ -1456,7 +1456,7 @@ export const TRIP = {
         {
           id: "a56",
           time: "13:00",
-          name: "우메다 스카이빌딩 — 공중정원",
+          name: "Umeda Sky Building — Floating Garden",
           nameJa: "梅田スカイビル 空中庭園",
           type: "sightseeing",
           icon: "🌆",
@@ -1476,7 +1476,7 @@ export const TRIP = {
         {
           id: "a57",
           time: "16:00",
-          name: "헤파이브 관람차 — 일몰",
+          name: "HEP Five Ferris Wheel — Sunset",
           nameJa: "HEP FIVE 観覧車",
           type: "leisure",
           icon: "🎡",
@@ -1495,7 +1495,7 @@ export const TRIP = {
         {
           id: "a58",
           time: "19:00",
-          name: "우나토 — 장어덮밥 저녁",
+          name: "Unato — Eel Rice Bowl Dinner",
           nameJa: "うな東 鰻丼",
           type: "food",
           icon: "🍛",
@@ -1546,7 +1546,7 @@ export const TRIP = {
         {
           id: "a59",
           time: "10:00",
-          name: "오사카 마지막 아침",
+          name: "Last Osaka Morning",
           nameJa: "大阪 最後の朝",
           type: "food",
           icon: "☕",
@@ -1565,7 +1565,7 @@ export const TRIP = {
         {
           id: "a60",
           time: "13:00",
-          name: "KIX 공항 이동",
+          name: "Head to KIX Airport",
           nameJa: "関西空港へ",
           type: "transport",
           icon: "🚆",
@@ -1584,7 +1584,7 @@ export const TRIP = {
         {
           id: "a61",
           time: "16:30",
-          name: "KIX → 김포 (Jeju Air 7C1328)",
+          name: "KIX → Gimpo (Jeju Air 7C1328)",
           nameJa: "関空 → 金浦",
           type: "transport",
           icon: "✈️",
@@ -1610,7 +1610,7 @@ export const TRIP = {
         },
       ],
       suggestions: [
-        "Japan is done — 8 incredible days. 안녕히 계세요, 日本!",
+        "Japan is done — 8 incredible days. Goodbye Japan! 🇯🇵",
         "Stock up on Japanese snacks at KIX for the family back home",
         "Next up: back to Korea for family time and Ulsan 🇰🇷",
       ],
@@ -1634,7 +1634,7 @@ export const TRIP = {
         {
           id: "a62",
           time: "09:00",
-          name: "[Kelly] 서울 코엑스 — 미팅 & 박람회",
+          name: "[Kelly] COEX Seoul — Meeting & Expo",
           nameKo: "코엑스 박람회",
           type: "culture",
           icon: "🏢",
@@ -1653,7 +1653,7 @@ export const TRIP = {
         {
           id: "a63",
           time: "09:00",
-          name: "[Alex] 단양 — Stu와 여행 출발",
+          name: "[Alex] Danyang — Road Trip with Stu",
           nameKo: "단양 여행",
           type: "leisure",
           icon: "🏔️",
@@ -1673,7 +1673,7 @@ export const TRIP = {
         {
           id: "a64",
           time: "15:00",
-          name: "[Alex] 소노벨 단양 체크인",
+          name: "[Alex] Check In — Sono Belle Danyang",
           nameKo: "소노벨 단양",
           type: "leisure",
           icon: "🏨",
@@ -1710,7 +1710,7 @@ export const TRIP = {
         {
           id: "a65",
           time: "10:00",
-          name: "[Kelly] 할머니댁 방문",
+          name: "[Kelly] Visit Grandma's House",
           nameKo: "할머니댁",
           type: "leisure",
           icon: "👵",
@@ -1726,7 +1726,7 @@ export const TRIP = {
         {
           id: "a66",
           time: "10:00",
-          name: "[Alex] 단양 관광",
+          name: "[Alex] Danyang Sightseeing",
           nameKo: "단양 팔경",
           type: "sightseeing",
           icon: "🏞️",
@@ -1761,7 +1761,7 @@ export const TRIP = {
         {
           id: "a67",
           time: "09:00",
-          name: "Alex & Kelly 재회",
+          name: "Alex & Kelly Reunite",
           nameKo: "재회!",
           type: "transport",
           icon: "🤝",
@@ -1776,7 +1776,7 @@ export const TRIP = {
         {
           id: "a68",
           time: "12:00",
-          name: "울산으로 이동",
+          name: "Travel to Ulsan",
           nameKo: "울산 이동",
           type: "transport",
           icon: "🚄",
@@ -1794,7 +1794,7 @@ export const TRIP = {
         {
           id: "a69",
           time: "19:00",
-          name: "저녁 — 최윤정쌤과",
+          name: "Dinner with Yunjung",
           nameKo: "저녁 약속",
           type: "food",
           icon: "🍽️",
@@ -1825,7 +1825,7 @@ export const TRIP = {
         {
           id: "a70",
           time: "10:00",
-          name: "울산 가족시간",
+          name: "Ulsan — Family Time",
           nameKo: "가족과 함께",
           type: "leisure",
           icon: "👨‍👩‍👧",
@@ -1839,7 +1839,7 @@ export const TRIP = {
         },
       ],
       transport: [],
-      suggestions: ["부전역 (Bujeon Station) area in Busan is 40 min away if a day out is wanted"],
+      suggestions: ["Bujeon Station (부전역) area in Busan is 40 min away if a day out is wanted"],
     },
 
     {
@@ -1856,7 +1856,7 @@ export const TRIP = {
         {
           id: "a71",
           time: "10:00",
-          name: "가족시간",
+          name: "Morning with Family",
           nameKo: "부모님과 함께",
           type: "leisure",
           icon: "🏡",
@@ -1871,7 +1871,7 @@ export const TRIP = {
         {
           id: "a72",
           time: "12:00",
-          name: "정자항 대게",
+          name: "Jeongja Port — Snow Crab",
           nameKo: "정자항 대게 맛집",
           type: "food",
           icon: "🦀",
@@ -1890,7 +1890,7 @@ export const TRIP = {
         {
           id: "a73",
           time: "19:00",
-          name: "저녁 — 윤정쌤",
+          name: "Dinner with Yunjung",
           nameKo: "최윤정쌤 저녁",
           type: "food",
           icon: "🍺",
@@ -1921,7 +1921,7 @@ export const TRIP = {
         {
           id: "a74",
           time: "11:00",
-          name: "울산 → 대구 이동",
+          name: "Travel: Ulsan → Daegu",
           nameKo: "대구로",
           type: "transport",
           icon: "🚗",
@@ -1936,7 +1936,7 @@ export const TRIP = {
         {
           id: "a75",
           time: "19:00",
-          name: "쑤뎅 생일 파티 🎂",
+          name: "Sudeng's Birthday Party 🎂",
           nameKo: "생일 축하!",
           type: "food",
           icon: "🎂",
@@ -1950,7 +1950,7 @@ export const TRIP = {
         },
       ],
       transport: [],
-      suggestions: ["생일 축하해요 쑤뎅! 🎉"],
+      suggestions: ["Happy Birthday Sudeng! 생일 축하해요! 🎉"],
     },
 
     {
@@ -1967,7 +1967,7 @@ export const TRIP = {
         {
           id: "a76",
           time: "11:00",
-          name: "알렉스 바디 마사지",
+          name: "Alex Body Massage",
           nameKo: "바디 마사지",
           type: "leisure",
           icon: "💆",
@@ -2001,7 +2001,7 @@ export const TRIP = {
         {
           id: "a77",
           time: "10:00",
-          name: "자유시간",
+          name: "Free Time",
           nameKo: "자유 일정",
           type: "leisure",
           icon: "😌",
@@ -2032,7 +2032,7 @@ export const TRIP = {
         {
           id: "a78",
           time: "10:00",
-          name: "아산 짐 싸기 & 출발",
+          name: "Pack Up Asan & Depart",
           nameKo: "짐 싸기",
           type: "transport",
           icon: "🧳",
@@ -2050,7 +2050,7 @@ export const TRIP = {
         {
           id: "a79",
           time: "14:00",
-          name: "인천 도착 & 관광",
+          name: "Arrive Incheon & Sightseeing",
           nameKo: "인천 관광",
           type: "sightseeing",
           icon: "⚓",
@@ -2069,7 +2069,7 @@ export const TRIP = {
         {
           id: "a80",
           time: "17:00",
-          name: "골든 튤립 인천공항 호텔 체크인",
+          name: "Check In — Golden Tulip Incheon Airport",
           nameKo: "골든 튤립 인천공항",
           type: "leisure",
           icon: "🏨",
@@ -2087,8 +2087,8 @@ export const TRIP = {
       ],
       transport: [],
       suggestions: [
-        "쑤뎅이네 참치 저녁 8시 — confirm if dinner with Sudeng's family is on tonight",
-        "Last Korean dinner — 삼겹살? 참치? 한우? Make it count!",
+        "Sudeng's family tuna dinner at 8pm — confirm if on tonight",
+        "Last Korean dinner — samgyeopsal? tuna? hanwoo beef? Make it count!",
       ],
     },
 
@@ -2106,7 +2106,7 @@ export const TRIP = {
         {
           id: "a81",
           time: "10:00",
-          name: "인천 마지막 관광",
+          name: "Last Incheon Sightseeing",
           nameKo: "인천 구경",
           type: "sightseeing",
           icon: "🌊",
@@ -2124,7 +2124,7 @@ export const TRIP = {
         {
           id: "a82",
           time: "17:00",
-          name: "공항 셔틀 탑승",
+          name: "Airport Shuttle",
           nameKo: "셔틀버스",
           type: "transport",
           icon: "🚌",
@@ -2162,7 +2162,7 @@ export const TRIP = {
         {
           id: "a83",
           time: "05:30",
-          name: "인천공항 출발",
+          name: "Depart Incheon Airport",
           nameKo: "공항 이동",
           type: "transport",
           icon: "🌅",
@@ -2200,7 +2200,7 @@ export const TRIP = {
       ],
       transport: [],
       suggestions: [
-        "안녕히 계세요 Korea! さようなら Japan! See you next time 🌸",
+        "Goodbye Korea! Goodbye Japan! See you next time 🌸",
         "LHR arrival 14:20 — bags, customs, and home for a proper cup of tea ☕",
       ],
     },
