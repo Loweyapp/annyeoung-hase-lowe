@@ -14,6 +14,33 @@ function emojiIcon(emoji, size = 28) {
   })
 }
 
+function DayMap({ center, zoom, activities }) {
+  return (
+    <MapContainer
+      center={center}
+      zoom={zoom}
+      style={{ width: '100%', height: '100%' }}
+      zoomControl={false}
+      attributionControl={false}
+    >
+      <TileLayer
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        attribution="© OpenStreetMap"
+      />
+      {activities.map(act => (
+        <Marker key={act.id} position={[act.lat, act.lng]} icon={emojiIcon(act.icon)}>
+          <Popup>
+            <strong>{act.name}</strong>
+            {act.nameKo && <div style={{ fontSize: 12, color: '#666' }}>{act.nameKo}</div>}
+            {act.nameJa && <div style={{ fontSize: 12, color: '#666' }}>{act.nameJa}</div>}
+            {act.time && <div style={{ fontSize: 12 }}>{act.time}</div>}
+          </Popup>
+        </Marker>
+      ))}
+    </MapContainer>
+  )
+}
+
 export default function DayDetail({ dayId, onBack, onNavigate }) {
   const dayIndex = TRIP.days.findIndex(d => d.id === dayId)
   const day = TRIP.days[dayIndex]
@@ -22,6 +49,7 @@ export default function DayDetail({ dayId, onBack, onNavigate }) {
 
   const [expanded, setExpanded] = useState({})
   const [mapReady, setMapReady] = useState(false)
+  const [mapFullscreen, setMapFullscreen] = useState(false)
 
   useEffect(() => {
     setExpanded({})
@@ -169,35 +197,63 @@ export default function DayDetail({ dayId, onBack, onNavigate }) {
       {/* Map */}
       {mappableActivities.length > 0 && mapReady && (
         <div className="day-map-section">
-          <p className="section-title">Map</p>
-          <div className="day-map-container">
-            <MapContainer
-              center={day.mapCenter}
-              zoom={day.mapZoom}
-              style={{ width: '100%', height: '100%' }}
-              zoomControl={false}
-              attributionControl={false}
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 16px 8px' }}>
+            <p className="section-title" style={{ padding: 0 }}>Map</p>
+            <button
+              onClick={() => setMapFullscreen(true)}
+              style={{
+                background: 'none', border: '1px solid #E5E7EB', borderRadius: 8,
+                padding: '4px 10px', fontSize: 12, color: '#6B7280', cursor: 'pointer',
+                display: 'flex', alignItems: 'center', gap: 4,
+              }}
             >
-              <TileLayer
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                attribution="© OpenStreetMap"
-              />
-              {mappableActivities.map(act => (
-                <Marker
-                  key={act.id}
-                  position={[act.lat, act.lng]}
-                  icon={emojiIcon(act.icon)}
-                >
-                  <Popup>
-                    <strong>{act.name}</strong>
-                    {act.nameKo && <div style={{ fontSize: 12, color: '#666' }}>{act.nameKo}</div>}
-                    {act.nameJa && <div style={{ fontSize: 12, color: '#666' }}>{act.nameJa}</div>}
-                    {act.time && <div style={{ fontSize: 12 }}>{act.time}</div>}
-                  </Popup>
-                </Marker>
-              ))}
-            </MapContainer>
+              ⛶ Full screen
+            </button>
           </div>
+          <div className="day-map-container">
+            <DayMap center={day.mapCenter} zoom={day.mapZoom} activities={mappableActivities} />
+          </div>
+        </div>
+      )}
+
+      {/* Fullscreen map overlay */}
+      {mapFullscreen && mappableActivities.length > 0 && (
+        <div style={{
+          position: 'fixed', inset: 0, zIndex: 9999, background: '#000',
+        }}>
+          <MapContainer
+            center={day.mapCenter}
+            zoom={day.mapZoom}
+            style={{ width: '100%', height: '100%' }}
+            zoomControl={true}
+            attributionControl={false}
+          >
+            <TileLayer
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              attribution="© OpenStreetMap"
+            />
+            {mappableActivities.map(act => (
+              <Marker key={act.id} position={[act.lat, act.lng]} icon={emojiIcon(act.icon)}>
+                <Popup>
+                  <strong>{act.name}</strong>
+                  {act.nameKo && <div style={{ fontSize: 12, color: '#666' }}>{act.nameKo}</div>}
+                  {act.nameJa && <div style={{ fontSize: 12, color: '#666' }}>{act.nameJa}</div>}
+                  {act.time && <div style={{ fontSize: 12 }}>{act.time}</div>}
+                </Popup>
+              </Marker>
+            ))}
+          </MapContainer>
+          <button
+            onClick={() => setMapFullscreen(false)}
+            style={{
+              position: 'absolute', top: 16, right: 16, zIndex: 10000,
+              background: 'rgba(26,26,46,0.9)', color: '#fff', border: 'none',
+              borderRadius: 24, padding: '10px 18px', fontSize: 14, fontWeight: 600,
+              cursor: 'pointer', backdropFilter: 'blur(8px)',
+            }}
+          >
+            ✕ Close
+          </button>
         </div>
       )}
 

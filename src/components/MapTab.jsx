@@ -24,6 +24,7 @@ const FILTERS = [
 
 export default function MapTab() {
   const [filter, setFilter] = useState('all')
+  const [fullscreen, setFullscreen] = useState(false)
 
   const allActivities = useMemo(() => {
     return TRIP.days.flatMap(day =>
@@ -67,24 +68,8 @@ export default function MapTab() {
 
   const defaultZoom = filter === 'all' ? 5 : filter === 'hotels' ? 5 : 11
 
-  return (
-    <div className="map-tab-container fade-in">
-      {/* Filter chips */}
-      <div className="map-filters">
-        {FILTERS.map(f => (
-          <button
-            key={f.id}
-            className={`filter-chip ${filter === f.id ? 'active' : ''}`}
-            onClick={() => setFilter(f.id)}
-          >
-            {f.label}
-          </button>
-        ))}
-      </div>
-
-      {/* Map */}
-      <div className="full-map">
-        <MapContainer
+  const mapContent = (
+    <MapContainer
           center={defaultCenter}
           zoom={defaultZoom}
           style={{ width: '100%', height: '100%' }}
@@ -128,7 +113,68 @@ export default function MapTab() {
             </Marker>
           ))}
         </MapContainer>
+  )
+
+  return (
+    <div className="map-tab-container fade-in">
+      {/* Filter chips + fullscreen toggle */}
+      <div className="map-filters" style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+        {FILTERS.map(f => (
+          <button
+            key={f.id}
+            className={`filter-chip ${filter === f.id ? 'active' : ''}`}
+            onClick={() => setFilter(f.id)}
+          >
+            {f.label}
+          </button>
+        ))}
+        <button
+          className="filter-chip"
+          onClick={() => setFullscreen(true)}
+          style={{ marginLeft: 'auto', flexShrink: 0 }}
+        >
+          ⛶
+        </button>
       </div>
+
+      {/* Map */}
+      <div className="full-map">
+        {mapContent}
+      </div>
+
+      {/* Fullscreen overlay */}
+      {fullscreen && (
+        <div style={{ position: 'fixed', inset: 0, zIndex: 9999, background: '#000' }}>
+          {mapContent}
+          <button
+            onClick={() => setFullscreen(false)}
+            style={{
+              position: 'absolute', top: 16, right: 16, zIndex: 10000,
+              background: 'rgba(26,26,46,0.9)', color: '#fff', border: 'none',
+              borderRadius: 24, padding: '10px 18px', fontSize: 14, fontWeight: 600,
+              cursor: 'pointer', backdropFilter: 'blur(8px)',
+            }}
+          >
+            ✕ Close
+          </button>
+          {/* Filters still accessible in fullscreen */}
+          <div style={{
+            position: 'absolute', bottom: 24, left: 0, right: 0, zIndex: 10000,
+            display: 'flex', gap: 6, overflowX: 'auto', padding: '0 16px',
+            justifyContent: 'center',
+          }}>
+            {FILTERS.map(f => (
+              <button
+                key={f.id}
+                className={`filter-chip ${filter === f.id ? 'active' : ''}`}
+                onClick={() => setFilter(f.id)}
+              >
+                {f.label}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   )
 }

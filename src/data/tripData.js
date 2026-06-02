@@ -215,14 +215,14 @@ export const TRIP = {
       country: "korea",
       segment: "korea1",
       city: "Asan area",
-      theme: "Day Trip — 오리구이 & 근교",
+      theme: "Day Trip — Duck BBQ & Asan Area",
       mapCenter: [36.4611, 127.1289],
       mapZoom: 11,
       activities: [
         {
           id: "a3",
           time: "10:00",
-          name: "근교 당일치기 — Day Trip",
+          name: "Asan Area Day Trip",
           nameKo: "근교 여행",
           type: "leisure",
           icon: "🚗",
@@ -241,7 +241,7 @@ export const TRIP = {
         {
           id: "a4",
           time: "12:30",
-          name: "오리구이 점심",
+          name: "Duck BBQ Lunch",
           nameKo: "오리구이",
           type: "food",
           icon: "🦆",
@@ -313,7 +313,7 @@ export const TRIP = {
         {
           id: "a7",
           time: "13:00",
-          name: "점심 — 광화문 미진",
+          name: "Lunch — Gwanghwamun Mijin",
           nameKo: "광화문 미진",
           type: "food",
           icon: "🍜",
@@ -332,7 +332,7 @@ export const TRIP = {
         {
           id: "a8",
           time: "14:30",
-          name: "전쟁기념관 (War Memorial of Korea)",
+          name: "War Memorial of Korea (전쟁기념관)",
           nameKo: "전쟁기념관",
           type: "sightseeing",
           icon: "🪖",
@@ -352,7 +352,7 @@ export const TRIP = {
         {
           id: "a9",
           time: "16:30",
-          name: "롯데타워 (Lotte World Tower)",
+          name: "Lotte World Tower (롯데타워)",
           nameKo: "롯데월드타워",
           type: "sightseeing",
           icon: "🗼",
@@ -372,7 +372,7 @@ export const TRIP = {
         {
           id: "a10",
           time: "18:00",
-          name: "SK 전 동료 저녁 (종각)",
+          name: "Dinner with Kelly's SK Colleagues (Jongno)",
           nameKo: "SK 동료들과 저녁",
           type: "food",
           icon: "🥂",
@@ -416,7 +416,7 @@ export const TRIP = {
         {
           id: "a11",
           time: "10:00",
-          name: "성수동 팝업 투어",
+          name: "Seongsu Pop-up Tour",
           nameKo: "성수동 팝업스토어",
           type: "culture",
           icon: "🛍️",
@@ -435,7 +435,7 @@ export const TRIP = {
         {
           id: "a12",
           time: "13:30",
-          name: "점심 — 성수 이가네 양꼬치",
+          name: "Lunch — Igane Lamb Skewers, Seongsu",
           nameKo: "이가네 양꼬치",
           type: "food",
           icon: "🍢",
@@ -454,7 +454,7 @@ export const TRIP = {
         {
           id: "a13",
           time: "15:00",
-          name: "롯데타워 (if missed yesterday)",
+          name: "Lotte World Tower (if missed yesterday)",
           nameKo: "롯데월드타워",
           type: "sightseeing",
           icon: "🗼",
@@ -469,7 +469,7 @@ export const TRIP = {
         {
           id: "a14",
           time: "16:30",
-          name: "수서역 SRT → 아산 (짐 싸러)",
+          name: "SRT Suseo → Asan (pack for Japan)",
           nameKo: "수서역 SRT 출발",
           type: "transport",
           icon: "🚄",
@@ -645,7 +645,7 @@ export const TRIP = {
         {
           id: "a20",
           time: "07:30",
-          name: "아침 온천욕 & 조식",
+          name: "Morning Onsen & Breakfast",
           nameJa: "朝風呂 & 朝食",
           type: "leisure",
           icon: "♨️",
@@ -660,7 +660,7 @@ export const TRIP = {
         {
           id: "a21",
           time: "10:00",
-          name: "Noboribetsu → Sapporo 이동",
+          name: "Travel: Noboribetsu → Sapporo",
           nameJa: "登別 → 札幌",
           type: "transport",
           icon: "🚆",
@@ -675,7 +675,7 @@ export const TRIP = {
         {
           id: "a22",
           time: "12:00",
-          name: "삿포로 시내 점심",
+          name: "Sapporo City Lunch",
           nameJa: "札幌ランチ",
           type: "food",
           icon: "🍜",
@@ -694,7 +694,7 @@ export const TRIP = {
         {
           id: "a23",
           time: "14:00",
-          name: "삿포로 맥주박물관",
+          name: "Sapporo Beer Museum",
           nameJa: "サッポロビール博物館",
           type: "culture",
           icon: "🍺",
@@ -714,7 +714,7 @@ export const TRIP = {
         {
           id: "a24",
           time: "17:00",
-          name: "오도리 공원 & 야경",
+          name: "Odori Park & Night View",
           nameJa: "大通公園 & 夜景",
           type: "sightseeing",
           icon: "🌃",
@@ -733,7 +733,7 @@ export const TRIP = {
         {
           id: "a25",
           time: "19:30",
-          name: "스스키노 저녁",
+          name: "Susukino Dinner",
           nameJa: "すすきの",
           type: "food",
           icon: "🍶",
@@ -784,7 +784,7 @@ export const TRIP = {
         {
           id: "a26",
           time: "09:00",
-          name: "삿포로 아침 관광",
+          name: "Sapporo Morning Stroll",
           nameJa: "札幌 朝観光",
           type: "sightseeing",
           icon: "🏙️",
@@ -802,7 +802,7 @@ export const TRIP = {
         {
           id: "a27",
           time: "11:00",
-          name: "오타루로 이동",
+          name: "Travel to Otaru",
           nameJa: "小樽へ",
           type: "transport",
           icon: "🚆",
@@ -1702,7 +1702,7 @@ export const TRIP = {
       country: "korea",
       segment: "korea2",
       city: "Danyang / Family",
-      theme: "Split Day — Kelly: 할머니댁 · Alex: Danyang",
+      theme: "Split Day — Kelly: Grandma's · Alex: Danyang",
       splitDay: true,
       mapCenter: [37.0000, 127.8000],
       mapZoom: 8,
@@ -1849,7 +1849,7 @@ export const TRIP = {
       country: "korea",
       segment: "korea2",
       city: "Ulsan",
-      theme: "정자 대게 & 윤정쌤 저녁",
+      theme: "Jeongja Crab & Dinner with Yunjung",
       mapCenter: [35.6500, 129.4000],
       mapZoom: 12,
       activities: [
@@ -1914,7 +1914,7 @@ export const TRIP = {
       country: "korea",
       segment: "korea2",
       city: "Ulsan → Daegu",
-      theme: "쑤뎅 생일 🎂 — Daegu",
+      theme: "Sudeng's Birthday 🎂 — Daegu",
       mapCenter: [35.8714, 128.6014],
       mapZoom: 12,
       activities: [
@@ -1960,7 +1960,7 @@ export const TRIP = {
       country: "korea",
       segment: "korea2",
       city: "Daegu / Asan",
-      theme: "바디 마사지 & Rest",
+      theme: "Massage & Rest Day",
       mapCenter: [35.8714, 128.6014],
       mapZoom: 12,
       activities: [
