@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
-const CATEGORIES = [
+const DEFAULT_CATEGORIES = [
   {
     id: 'docs',
     label: 'Documents & Money',
@@ -96,40 +96,95 @@ const CATEGORIES = [
   },
 ]
 
-const STORAGE_KEY = 'packing-checked'
+const CATS_KEY = 'packing-categories'
+const CHECKED_KEY = 'packing-checked'
+
+function loadCategories() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(CATS_KEY))
+    return saved || DEFAULT_CATEGORIES
+  } catch { return DEFAULT_CATEGORIES }
+}
+
+function uid() {
+  return `item-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`
+}
 
 export default function PackTab() {
+  const [categories, setCategories] = useState(loadCategories)
   const [checked, setChecked] = useState(() => {
-    try {
-      return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}
-    } catch { return {} }
+    try { return JSON.parse(localStorage.getItem(CHECKED_KEY)) || {} } catch { return {} }
   })
   const [expanded, setExpanded] = useState(() => {
     const init = {}
-    CATEGORIES.forEach(c => { init[c.id] = true })
+    DEFAULT_CATEGORIES.forEach(c => { init[c.id] = true })
     return init
   })
   const [showOnlyUnchecked, setShowOnlyUnchecked] = useState(false)
+  // editing: { catId, itemId } | null  — itemId null means new item
+  const [editing, setEditing] = useState(null)
+  const [editText, setEditText] = useState('')
+  const inputRef = useRef(null)
 
   useEffect(() => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(checked))
+    localStorage.setItem(CATS_KEY, JSON.stringify(categories))
+  }, [categories])
+
+  useEffect(() => {
+    localStorage.setItem(CHECKED_KEY, JSON.stringify(checked))
   }, [checked])
 
+  useEffect(() => {
+    if (editing && inputRef.current) inputRef.current.focus()
+  }, [editing])
+
+  // --- item actions ---
   function toggle(id) {
     setChecked(prev => ({ ...prev, [id]: !prev[id] }))
   }
 
-  function toggleCategory(catId) {
-    setExpanded(prev => ({ ...prev, [catId]: !prev[catId] }))
+  function startEdit(catId, item) {
+    setEditing({ catId, itemId: item.id })
+    setEditText(item.text)
+  }
+
+  function startAdd(catId) {
+    setEditing({ catId, itemId: null })
+    setEditText('')
+    setExpanded(prev => ({ ...prev, [catId]: true }))
+  }
+
+  function commitEdit() {
+    const text = editText.trim()
+    if (!text) { setEditing(null); return }
+    setCategories(prev => prev.map(cat => {
+      if (cat.id !== editing.catId) return cat
+      if (editing.itemId === null) {
+        // new item
+        return { ...cat, items: [...cat.items, { id: uid(), text }] }
+      }
+      return { ...cat, items: cat.items.map(i => i.id === editing.itemId ? { ...i, text } : i) }
+    }))
+    setEditing(null)
+  }
+
+  function cancelEdit() { setEditing(null) }
+
+  function deleteItem(catId, itemId) {
+    setCategories(prev => prev.map(cat =>
+      cat.id !== catId ? cat : { ...cat, items: cat.items.filter(i => i.id !== itemId) }
+    ))
+    setChecked(prev => { const n = { ...prev }; delete n[itemId]; return n })
   }
 
   function resetAll() {
     if (confirm('Clear all checks?')) setChecked({})
   }
 
-  const totalItems = CATEGORIES.reduce((n, c) => n + c.items.length, 0)
-  const checkedCount = Object.values(checked).filter(Boolean).length
-  const pct = Math.round((checkedCount / totalItems) * 100)
+  // --- stats ---
+  const totalItems = categories.reduce((n, c) => n + c.items.length, 0)
+  const checkedCount = categories.reduce((n, c) => n + c.items.filter(i => checked[i.id]).length, 0)
+  const pct = totalItems === 0 ? 0 : Math.round((checkedCount / totalItems) * 100)
 
   return (
     <div className="fade-in">
@@ -138,8 +193,6 @@ export default function PackTab() {
         <span className="trip-emoji">🎒</span>
         <h1>Packing List</h1>
         <p className="subtitle">{checkedCount} / {totalItems} packed</p>
-
-        {/* Progress bar */}
         <div style={{ width: '100%', maxWidth: 280, margin: '12px auto 0', background: 'rgba(255,255,255,0.2)', borderRadius: 8, height: 8, overflow: 'hidden' }}>
           <div style={{ width: `${pct}%`, height: '100%', background: pct === 100 ? '#4ADE80' : '#E9C46A', borderRadius: 8, transition: 'width 0.3s' }} />
         </div>
@@ -154,83 +207,142 @@ export default function PackTab() {
           className={`filter-chip ${showOnlyUnchecked ? 'active' : ''}`}
           onClick={() => setShowOnlyUnchecked(v => !v)}
         >
-          Show missing only
+          Missing only
         </button>
-        <button
-          className="filter-chip"
-          onClick={resetAll}
-          style={{ marginLeft: 'auto', color: '#EF4444' }}
-        >
-          Reset
+        <button className="filter-chip" onClick={resetAll} style={{ color: '#EF4444', marginLeft: 'auto' }}>
+          Reset checks
         </button>
       </div>
 
       {/* Categories */}
       <div style={{ padding: '0 16px 32px', display: 'flex', flexDirection: 'column', gap: 12 }}>
-        {CATEGORIES.map(cat => {
+        {categories.map(cat => {
           const catChecked = cat.items.filter(i => checked[i.id]).length
           const visibleItems = showOnlyUnchecked ? cat.items.filter(i => !checked[i.id]) : cat.items
           if (showOnlyUnchecked && visibleItems.length === 0) return null
+          const isOpen = expanded[cat.id] !== false
 
           return (
             <div key={cat.id} className="card" style={{ overflow: 'hidden', padding: 0 }}>
               {/* Category header */}
-              <button
-                onClick={() => toggleCategory(cat.id)}
-                style={{
-                  width: '100%', display: 'flex', alignItems: 'center', gap: 10,
-                  padding: '14px 16px', background: 'none', border: 'none', cursor: 'pointer',
-                  borderBottom: expanded[cat.id] ? '1px solid #E5E7EB' : 'none',
-                }}
-              >
-                <span style={{ fontSize: 20 }}>{cat.icon}</span>
-                <span style={{ fontWeight: 700, fontSize: 15, flex: 1, textAlign: 'left' }}>{cat.label}</span>
-                <span style={{ fontSize: 12, color: catChecked === cat.items.length ? '#16A34A' : '#6B7280', fontWeight: 600 }}>
-                  {catChecked}/{cat.items.length}
-                </span>
-                <span style={{ fontSize: 12, color: '#9CA3AF', marginLeft: 6 }}>
-                  {expanded[cat.id] ? '▲' : '▼'}
-                </span>
-              </button>
+              <div style={{ display: 'flex', alignItems: 'center', borderBottom: isOpen ? '1px solid #E5E7EB' : 'none' }}>
+                <button
+                  onClick={() => setExpanded(prev => ({ ...prev, [cat.id]: !isOpen }))}
+                  style={{ flex: 1, display: 'flex', alignItems: 'center', gap: 10, padding: '14px 16px', background: 'none', border: 'none', cursor: 'pointer', textAlign: 'left' }}
+                >
+                  <span style={{ fontSize: 20 }}>{cat.icon}</span>
+                  <span style={{ fontWeight: 700, fontSize: 15, flex: 1 }}>{cat.label}</span>
+                  <span style={{ fontSize: 12, color: catChecked === cat.items.length && cat.items.length > 0 ? '#16A34A' : '#6B7280', fontWeight: 600 }}>
+                    {catChecked}/{cat.items.length}
+                  </span>
+                  <span style={{ fontSize: 11, color: '#9CA3AF', marginLeft: 6 }}>{isOpen ? '▲' : '▼'}</span>
+                </button>
+                {/* Add item button */}
+                <button
+                  onClick={() => startAdd(cat.id)}
+                  style={{ padding: '14px 14px', background: 'none', border: 'none', cursor: 'pointer', fontSize: 20, color: '#6B7280', lineHeight: 1 }}
+                  title="Add item"
+                >+</button>
+              </div>
 
-              {/* Items */}
-              {expanded[cat.id] && (
+              {isOpen && (
                 <div>
-                  {visibleItems.map((item, idx) => (
-                    <button
-                      key={item.id}
-                      onClick={() => toggle(item.id)}
-                      style={{
-                        width: '100%', display: 'flex', alignItems: 'center', gap: 12,
-                        padding: '12px 16px', background: 'none', border: 'none', cursor: 'pointer',
-                        borderBottom: idx < visibleItems.length - 1 ? '1px solid #F3F4F6' : 'none',
-                        textAlign: 'left',
-                      }}
-                    >
-                      <div style={{
-                        width: 22, height: 22, borderRadius: 6, flexShrink: 0,
-                        border: checked[item.id] ? 'none' : '2px solid #D1D5DB',
-                        background: checked[item.id] ? '#16A34A' : 'transparent',
-                        display: 'flex', alignItems: 'center', justifyContent: 'center',
-                        transition: 'all 0.15s',
-                      }}>
-                        {checked[item.id] && <span style={{ color: '#fff', fontSize: 13, fontWeight: 700 }}>✓</span>}
+                  {visibleItems.map((item, idx) => {
+                    const isEditing = editing?.catId === cat.id && editing?.itemId === item.id
+                    return (
+                      <div
+                        key={item.id}
+                        style={{ borderBottom: idx < visibleItems.length - 1 || editing?.catId === cat.id && editing?.itemId === null ? '1px solid #F3F4F6' : 'none' }}
+                      >
+                        {isEditing ? (
+                          <EditRow
+                            value={editText}
+                            onChange={setEditText}
+                            onCommit={commitEdit}
+                            onCancel={cancelEdit}
+                            inputRef={inputRef}
+                          />
+                        ) : (
+                          <div style={{ display: 'flex', alignItems: 'center' }}>
+                            {/* Checkbox + label */}
+                            <button
+                              onClick={() => toggle(item.id)}
+                              style={{ flex: 1, display: 'flex', alignItems: 'center', gap: 12, padding: '12px 16px', background: 'none', border: 'none', cursor: 'pointer', textAlign: 'left' }}
+                            >
+                              <div style={{
+                                width: 22, height: 22, borderRadius: 6, flexShrink: 0,
+                                border: checked[item.id] ? 'none' : '2px solid #D1D5DB',
+                                background: checked[item.id] ? '#16A34A' : 'transparent',
+                                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                transition: 'all 0.15s',
+                              }}>
+                                {checked[item.id] && <span style={{ color: '#fff', fontSize: 13, fontWeight: 700 }}>✓</span>}
+                              </div>
+                              <span style={{ fontSize: 14, color: checked[item.id] ? '#9CA3AF' : '#1A1A2E', textDecoration: checked[item.id] ? 'line-through' : 'none', transition: 'all 0.15s' }}>
+                                {item.text}
+                              </span>
+                            </button>
+                            {/* Edit / Delete */}
+                            <button
+                              onClick={() => startEdit(cat.id, item)}
+                              style={{ padding: '12px 8px', background: 'none', border: 'none', cursor: 'pointer', fontSize: 14, color: '#9CA3AF' }}
+                              title="Edit"
+                            >✎</button>
+                            <button
+                              onClick={() => deleteItem(cat.id, item.id)}
+                              style={{ padding: '12px 12px 12px 4px', background: 'none', border: 'none', cursor: 'pointer', fontSize: 14, color: '#FCA5A5' }}
+                              title="Delete"
+                            >✕</button>
+                          </div>
+                        )}
                       </div>
-                      <span style={{
-                        fontSize: 14, color: checked[item.id] ? '#9CA3AF' : '#1A1A2E',
-                        textDecoration: checked[item.id] ? 'line-through' : 'none',
-                        transition: 'all 0.15s',
-                      }}>
-                        {item.text}
-                      </span>
-                    </button>
-                  ))}
+                    )
+                  })}
+
+                  {/* New item row */}
+                  {editing?.catId === cat.id && editing?.itemId === null && (
+                    <EditRow
+                      value={editText}
+                      onChange={setEditText}
+                      onCommit={commitEdit}
+                      onCancel={cancelEdit}
+                      inputRef={inputRef}
+                      placeholder="New item..."
+                    />
+                  )}
                 </div>
               )}
             </div>
           )
         })}
       </div>
+    </div>
+  )
+}
+
+function EditRow({ value, onChange, onCommit, onCancel, inputRef, placeholder = 'Edit item...' }) {
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '8px 12px', background: '#F0FDF4' }}>
+      <input
+        ref={inputRef}
+        value={value}
+        onChange={e => onChange(e.target.value)}
+        onKeyDown={e => { if (e.key === 'Enter') onCommit(); if (e.key === 'Escape') onCancel() }}
+        placeholder={placeholder}
+        style={{
+          flex: 1, fontSize: 14, padding: '7px 10px', borderRadius: 8,
+          border: '1.5px solid #86EFAC', outline: 'none', background: '#fff',
+          fontFamily: 'inherit',
+        }}
+      />
+      <button
+        onClick={onCommit}
+        style={{ background: '#16A34A', color: '#fff', border: 'none', borderRadius: 8, padding: '7px 14px', fontWeight: 700, fontSize: 14, cursor: 'pointer' }}
+      >Save</button>
+      <button
+        onClick={onCancel}
+        style={{ background: 'none', border: 'none', color: '#9CA3AF', fontSize: 14, cursor: 'pointer', padding: '7px 4px' }}
+      >✕</button>
     </div>
   )
 }
