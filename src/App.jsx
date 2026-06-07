@@ -5,6 +5,7 @@ import DaysTab from './components/DaysTab'
 import DayDetail from './components/DayDetail'
 import HotelsTab from './components/HotelsTab'
 import MapTab from './components/MapTab'
+import PackTab from './components/PackTab'
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('today')
@@ -46,6 +47,7 @@ export default function App() {
         )}
         {activeTab === 'hotels' && <HotelsTab />}
         {activeTab === 'map' && <MapTab />}
+        {activeTab === 'pack' && <PackTab />}
       </main>
 
       <BottomNav activeTab={activeTab} onTabChange={handleTabChange} />

@@ -1,10 +1,11 @@
-import { Calendar, CalendarDays, Hotel, Map } from 'lucide-react'
+import { Calendar, CalendarDays, Hotel, Map, Luggage } from 'lucide-react'
 
 const TABS = [
   { id: 'today', label: 'Today', Icon: Calendar },
   { id: 'days', label: 'Days', Icon: CalendarDays },
   { id: 'hotels', label: 'Hotels', Icon: Hotel },
   { id: 'map', label: 'Map', Icon: Map },
+  { id: 'pack', label: 'Pack', Icon: Luggage },
 ]
 
 export default function BottomNav({ activeTab, onTabChange }) {
